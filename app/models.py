@@ -188,8 +188,8 @@ class BitwiseARModel(nn.Module):
                 # The first token of _streaming_prev_attn_feat is style_cond, which does not get pos_embed.
                 # _streaming_prev_lvl_pos_embed corresponds to the VQ part.
                 prev_tokens_for_attn = self._streaming_prev_attn_feat.clone()
-                if prev_tokens_for_attn.shape[1] > 1 : # If there's more than just style_cond
-                     prev_tokens_for_attn[:, 1:] = prev_tokens_for_attn[:, 1:] + self._streaming_prev_lvl_pos_embed[:, :prev_tokens_for_attn.shape[1]-1]
+                # if prev_tokens_for_attn.shape[1] > 1 : # If there's more than just style_cond
+                #      prev_tokens_for_attn[:, 1:] = prev_tokens_for_attn[:, 1:] + self._streaming_prev_lvl_pos_embed[:, :prev_tokens_for_attn.shape[1]-1]
 
 
                 attn_feat = self.attn_blocks[bidx](

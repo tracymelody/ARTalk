@@ -6,14 +6,19 @@ import torch
 import argparse
 import torchaudio
 import numpy as np
-from inference import ARTAvatarInferEngine
+from inference_streaming import ARTAvatarInferEngine
 
-def run_inference(audio_path, style_id="natural_0", clip_length=750, output_dir="./"):
+def run_inference(audio_path, style_id="natural_0", clip_length=750, output_dir="./", device="cuda"):
     """Run inference on the audio file and save the motion PT file"""
-    print(f"Running inference on {audio_path}...")
+    print(f"Running inference on {audio_path} with device {device}...")
     
     # Initialize the inference engine
-    engine = ARTAvatarInferEngine(load_gaga=False, fix_pose=False, clip_length=clip_length)
+    engine = ARTAvatarInferEngine(
+        load_gaga=False, 
+        fix_pose=False, 
+        clip_length=clip_length,
+        device=device
+    )
     
     # Load audio
     audio, sr = torchaudio.load(audio_path)
@@ -66,11 +71,17 @@ def main():
     parser.add_argument("--output_dir", "-o", default="./", type=str, help="Output directory")
     parser.add_argument("--skip_inference", action="store_true", help="Skip inference and just convert PT to NPY")
     parser.add_argument("--pt_file", "-p", type=str, help="Path to PT file (if skipping inference)")
+    parser.add_argument("--device", default="cuda", type=str, help="Device to run inference on (e.g., 'cuda', 'cpu')")
     
     args = parser.parse_args()
     
     # Create output directory if it doesn't exist
     os.makedirs(args.output_dir, exist_ok=True)
+    
+    # Check CUDA availability and switch to CPU if necessary
+    if args.device == 'cuda' and not torch.cuda.is_available():
+        print("CUDA is not available, switching to CPU for inference.")
+        args.device = 'cpu'
     
     if not args.skip_inference:
         # Run inference to get PT file
@@ -78,7 +89,8 @@ def main():
             args.audio_path, 
             args.style_id, 
             args.clip_length,
-            args.output_dir
+            args.output_dir,
+            args.device
         )
     else:
         # Use provided PT file
