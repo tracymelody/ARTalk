@@ -1,0 +1,91 @@
+# Core dependencies
+numpy==1.26.4
+torch==2.4.1
+torchvision==0.19.1
+torchaudio==2.4.1
+pytorch3d==0.7.8
+faiss-cpu==1.8.0
+onnx==1.16.2
+onnx2torch==1.5.15
+
+# Data processing and visualization
+pillow==10.4.0
+scipy==1.13.1
+matplotlib==3.9.2
+pandas==2.2.3
+scikit-image==0.24.0
+tqdm==4.66.5
+networkx==3.2.1
+sympy==1.13.2
+filelock==3.13.1
+mpmath==1.3.0
+packaging==24.1
+
+# Machine learning and computer vision
+transformers==4.45.1
+einops==0.8.1
+face-alignment==1.4.1
+opencv-python==4.10.0.84
+imageio==2.35.1
+numba==0.60.0
+fvcore==0.1.5.post20221221
+iopath==0.1.10
+portalocker==1.4.0
+
+# Web and API
+fastapi==0.115.11
+uvicorn==0.34.0
+aiohttp==3.10.6
+aiofiles==23.2.1
+aiohappyeyeballs==2.4.2
+aiosignal==1.3.1
+anyio==4.9.0
+starlette==0.46.1
+pydantic==2.10.6
+pydantic-core==2.27.2
+python-multipart==0.0.20
+requests==2.32.3
+urllib3==2.2.2
+certifi==2024.8.30
+charset-normalizer==3.3.2
+idna==3.7
+pysocks==1.7.1
+
+# Audio processing
+av==13.0.0
+pydub==0.25.1
+gtts==2.5.4
+
+# Development tools
+ipython==8.18.1
+ipdb==0.13.13
+ruff==0.11.1
+
+# Gradio and related
+gradio==4.44.1
+gradio-client==1.3.0
+ffmpy==0.5.0
+httpcore==1.0.7
+httpx==0.28.1
+
+# Lightning ecosystem
+lightning==2.4.0
+pytorch-lightning==2.4.0
+torchmetrics==1.4.2
+lightning-utilities==0.11.7
+
+# Hugging Face ecosystem
+huggingface-hub==0.29.3
+safetensors==0.4.5
+tokenizers==0.20.0
+
+# Utilities
+omegaconf==2.3.0
+fsspec==2024.9.0
+click==8.1.8
+rich==13.8.1
+typer==0.15.2
+tabulate==0.9.0
+gpustat==1.1.1
+psutil==6.0.0
+pyyaml==6.0.1

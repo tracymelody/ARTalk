@@ -5,7 +5,6 @@
 **/*.ckpt
 **/*.onnx
 **/*.tar
-**/*.txt
 **/*.obj
 **/*.log
 **/*.swp
