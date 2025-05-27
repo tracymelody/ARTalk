@@ -362,7 +362,7 @@ def run_gradio_app(engine):
             fn=toggle_input, inputs=[input_type], outputs=[audio_group, text_group]
         )
 
-    demo.launch(server_name="0.0.0.0", server_port=8961) # Use a different port
+    demo.launch(share=True) # Use a different port
 
 
 if __name__ == '__main__':
